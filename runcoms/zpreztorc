@@ -10,7 +10,7 @@
 #
 
 # Set case-sensitivity for completion, history lookup, etc.
-# zstyle ':prezto:*:*' case-sensitive 'yes'
+zstyle ':prezto:*:*' case-sensitive 'yes'
 
 # Color output (auto set to 'no' on dumb terminals).
 zstyle ':prezto:*:*' color 'yes'
@@ -35,6 +35,7 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'autosuggestions' \
   'prompt'
 
 #
@@ -113,7 +114,15 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'sorin'
+# zstyle ':prezto:module:prompt' theme 'sorin'
+
+# theme list
+# agnoster cloud damoekri giddie kylewest minimal nicoulaj paradox peepcode powerlevel10k powerlevel9k powerline pure skwp smiley sorin steeef adam1 adam2 bart bigfade clint default elite2 elite fade fire off oliver pws redhat restore suse walters zefram
+# zstyle ':prezto:module:prompt' theme 'agnoster'
+# zstyle ':prezto:module:prompt' theme 'steeef'
+zstyle ':prezto:module:prompt' theme 'whiteleaf'
+
+
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
@@ -203,7 +212,7 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 #
 
 # Auto start a session when Zsh is launched in a local terminal.
-# zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Auto start a session when Zsh is launched in a SSH connection.
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
@@ -212,7 +221,7 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
-# zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
+zstyle ':prezto:module:tmux:session' name 'dev'
 
 #
 # Utility
@@ -222,3 +231,4 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # before deleting or overwriting files. Set to 'no' to disable this safer
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
+

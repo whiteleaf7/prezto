@@ -1,13 +1,128 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+# vim:ft=zsh:ts=4:sw=4:sts:et:
+#   ___           _      ____   _       ___           __ _
+#  |_ _|__ _ _ _ ( )___ |_  /__| |_    / __|___ _ _  / _(_)__ _
+#   | |/ _` | ' \|/(_-<  / /(_-< ' \  | (__/ _ \ ' \|  _| / _` |
+#  |___\__,_|_||_| /__/ /___/__/_||_|  \___\___/_||_|_| |_\__, |
+#                                                         |___/
+# https://github.com/statico/dotfiles/blob/master/.zshrc
+
+# internal utility functions --------------------------------------------{{{1
+
+# Returns whether the given command is executable or aliased.
+_has() {
+  return $( whence $1 &>/dev/null )
+}
+
+# }}}
+
+# zshrc initialize --------------------------------------------{{{1
+
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_CONFIG_HOME="${HOME}/.config"
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# 分割した設定ファイルの自動ロード
+ZSHHOME="${HOME}/.config/zsh"
+if [ -d $ZSHHOME -a -r $ZSHHOME -a \
+    -x $ZSHHOME ]; then
+    for i in $ZSHHOME/*; do
+        [[ ${i##*/} = *.zsh ]] &&
+            [ \( -f $i -o -h $i \) -a -r $i ] && . $i
+    done
+fi
+
+# source ~/.zplug/init.zsh
+
+# completions
+# fpath=($(brew --prefix zsh-completions)/share/zsh-completions $fpath)
+# fpath=(/usr/local/share/zsh/site-functions $fpath)
+# fpath=(~/.zsh/completion $fpath)
+ 
+# enhancd
+[ -f ~/github/enhancd/init.sh ] && source ~/github/enhancd/init.sh
+
+path=(
+    $GOPATH/bin(N-/)
+    $path
+)
+
+setopt nonomatch
+
+# }}}
+
+# alias ----------------------------------------------------------------{{{1
+alias vim=nvim
+alias vi=e
+alias v=nvim
+
+# for git
+alias co='git checkout `git branch | fzf`'
+alias st='git status'
+
+# interactive operation
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# ls を exa に置き換える
+# exa: https://github.com/ogham/exa
+alias ls='exa -hFG --icons'
+alias ll='ls -l'
+alias la='ls -la'
+alias l='ls'
+
+# for Ruby
+alias b='bundle exec'
+alias ctags_ruby='ctags --langmap=RUBY:.rb --exclude="*.js" --exclude=".git*" --exclude="*.sql" --exclude="node_modules*" -R .'
+
+# for Docker
+alias d='docker'
+alias dc='docker-compose'
+# 一旦Docker Composeコンテナを削除して掃除してから build & up する
+alias dc_build_up='docker-compose rm -fv && docker-compose build && docker-compose up'
+# 一旦Docker Composeコンテナを削除して掃除してから build する
+alias dc_build='docker-compose rm -fv && docker-compose build'
+# タグのついていないImageを削除する
+alias docker_rm_images='docker images -qf dangling=true | xargs docker rmi'
+# 起動していないコンテナを削除する
+alias docker_rm_containers='docker ps -aqf status=exited | xargs docker rm -v' # rm with volumes
+# どのコンテナにも紐付いていないData Volumeを削除する
+# alias docker_rm_volumes='docker volume ls -qf dangling=true | xargs docker volume rm'
+# Docker Composeコンテナを削除する
+alias docker_rm_compose_containers='docker-compose rm -fv'
+
+
+alias ag="ag --color-match '1;31'"
+alias updatedb="sudo /usr/libexec/locate.updatedb"
+alias grep='grep --color'
+
+alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
+
+# }}}
+
+#############################################################
+# prompt
+
+# local prompt_location="%F{081}%B%~%b%f"
+# local promot_mark="%B%F{208}%(!,#,$) %f%b"
+# local status_code="%(?,,%F{208} / %f%B%F{red}%?%f%b)"
+# local number_of_jobs="%(1j.%F{208} / %f%F{226}%B%j%b%f.)"
+
+# PROMPT="
+# %F{135}%n%f at %F{166}%m%f in %F{118}%~%f ${vcs_info_msg_0_}
+# $python_info[virtualenv]${editor_info[keymap]}"
+
+# zmodload zsh/zpty
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+tmux has-session >/dev/null 2>&1 && if [ -z "${TMUX}" ]; then
+    tmux list-sessions
+fi
+
+stty stop undef
