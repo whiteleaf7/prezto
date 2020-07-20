@@ -102,6 +102,8 @@ alias grep='grep --color'
 
 alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 
+alias va='vagrant'
+
 # }}}
 
 #############################################################

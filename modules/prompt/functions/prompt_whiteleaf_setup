@@ -115,7 +115,7 @@ function prompt_whiteleaf_setup {
   # ver 3
   PROMPT="
 ${_prompt_whiteleaf_colors[9]}%n@%M%f in ${_prompt_whiteleaf_colors[6]}%~%f "'${vcs_info_msg_0_}'"
-"'${_prompt_whiteleaf_colors[10]}%j${_prompt_whiteleaf_colors[7]}> %f'
+"'${_prompt_whiteleaf_colors[10]}%j${_prompt_whiteleaf_colors[7]} %f'
 
   RPROMPT=''
 }
