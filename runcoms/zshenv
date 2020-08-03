@@ -5,13 +5,14 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-# Ensure that a non-login, non-interactive shell has a defined environment.
-if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
-fi
-
+export LANG=ja_JP.UTF-8
 export FZF_DEFAULT_OPTS="--layout=reverse --height=45%"
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
 export ENHANCD_FILTER="fzf"
 export GOENV_DISABLE_GOPATH=1
 export GOPATH="$HOME/go"
+
+# Ensure that a non-login, non-interactive shell has a defined environment.
+if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi
