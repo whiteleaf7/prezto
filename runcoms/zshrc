@@ -58,7 +58,7 @@ setopt nonomatch
 
 # alias ----------------------------------------------------------------{{{1
 alias vim=nvim
-alias vi=e
+alias vi='nvim -u ~/.config/nvim/simple_init.vim'
 alias v=nvim
 
 # for git
