@@ -13,6 +13,10 @@ _has() {
   return $( whence $1 &>/dev/null )
 }
 
+_is_vagrant() {
+    return $( test $USER = "vagrant" )
+}
+
 # }}}
 
 # zshrc initialize --------------------------------------------{{{1
@@ -106,7 +110,12 @@ alias grep='grep --color'
 
 alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 
-alias va='vagrant'
+if _is_vagrant; then
+    alias pbcopy="lemonade copy"
+    alias pbpaste="lemonade paste"
+else
+    alias va='vagrant'
+fi
 
 # }}}
 
@@ -128,6 +137,10 @@ export PATH="/usr/local/opt/openjdk/bin:$PATH"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 tmux has-session >/dev/null 2>&1 && if [ -z "${TMUX}" ]; then
+    if _is_vagrant; then
+        echo
+        echo "Tmux list sessions"
+    fi
     tmux list-sessions
 fi
 
