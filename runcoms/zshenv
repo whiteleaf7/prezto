@@ -12,6 +12,7 @@ export ENHANCD_FILTER="fzf"
 export GOENV_DISABLE_GOPATH=1
 export GOPATH="$HOME/go"
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
+export PATH="$(echo "$PATH" | sed -r -e 's;:/mnt/[^:]+;;g')"
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
