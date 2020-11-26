@@ -60,7 +60,13 @@ setopt nonomatch
 
 # }}}
 
-# alias ----------------------------------------------------------------{{{1
+# settings -------------------------------------------------------------{{{
+
+set termguicolors
+
+# }}}
+
+# alias ----------------------------------------------------------------{{{
 alias vim=nvim
 alias vi='nvim -u ~/.config/nvim/simple_init.vim'
 alias v=nvim
@@ -90,6 +96,7 @@ alias ctags_ruby='ctags --langmap=RUBY:.rb --exclude="*.js" --exclude=".git*" --
 # for Docker
 alias d='docker'
 alias dc='docker-compose'
+alias dce='docker-compose -f docker-compose.yml -f docker-compose.local.yml'
 # 一旦Docker Composeコンテナを削除して掃除してから build & up する
 alias dc_build_up='docker-compose rm -fv && docker-compose build && docker-compose up'
 # 一旦Docker Composeコンテナを削除して掃除してから build する
@@ -111,8 +118,8 @@ alias grep='grep --color'
 alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 
 if _is_vagrant; then
-    alias pbcopy="lemonade copy"
-    alias pbpaste="lemonade paste"
+    # alias pbcopy="lemonade copy"
+    # alias pbpaste="lemonade paste"
 else
     alias va='vagrant'
 fi
