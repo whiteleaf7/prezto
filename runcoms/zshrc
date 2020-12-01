@@ -124,8 +124,10 @@ else
     alias va='vagrant'
 fi
 
-unalias pbcopy
-unalias pbpaste
+if [ "`alias | grep '^pbcopy'`" ]; then
+    unalias pbcopy
+    unalias pbpaste
+fi
 
 # }}}
 
