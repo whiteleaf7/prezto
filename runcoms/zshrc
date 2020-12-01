@@ -124,6 +124,9 @@ else
     alias va='vagrant'
 fi
 
+unalias pbcopy
+unalias pbpaste
+
 # }}}
 
 #############################################################
