@@ -30,6 +30,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+[ -f /opt/homebrew/bin/brew ] && eval $(/opt/homebrew/bin/brew shellenv)
 
 # 分割した設定ファイルの自動ロード
 ZSHHOME="${HOME}/.config/zsh"
@@ -67,9 +68,12 @@ set termguicolors
 # }}}
 
 # alias ----------------------------------------------------------------{{{
-alias vim=nvim
-alias vi='nvim -u ~/.config/nvim/simple_init.vim'
-alias v=nvim
+if _has nvim; then
+    alias vim=nvim
+fi
+
+alias vi='vim -u ~/.config/nvim/simple_init.vim'
+alias v=vim
 
 # for git
 alias co='git checkout `git branch | fzf`'
@@ -82,11 +86,13 @@ alias mv='mv -i'
 
 # ls を exa に置き換える
 # exa: https://github.com/ogham/exa
-alias ls='exa --icons'
-alias ll='ls -l'
-alias la='ls -la'
-alias l='ls'
-alias tree='ls -T'
+if _has exa; then
+    alias ls='exa --icons'
+    alias ll='ls -l'
+    alias la='ls -la'
+    alias l='ls'
+    alias tree='ls -T'
+fi
 
 
 # for Ruby
@@ -122,6 +128,11 @@ if _is_vagrant; then
     # alias pbpaste="lemonade paste"
 else
     alias va='vagrant'
+fi
+
+if [ "`alias | grep '^pbcopy'`" ]; then
+    unalias pbcopy
+    unalias pbpaste
 fi
 
 # }}}
