@@ -68,5 +68,5 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 
 # MacPorts Installer addition on 2020-12-17_at_16:21:00: adding an appropriate DISPLAY variable for use with MacPorts.
-export DISPLAY=:0
+# export DISPLAY=:0
 # Finished adapting your DISPLAY environment variable for use with MacPorts.
