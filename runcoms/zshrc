@@ -112,7 +112,7 @@ alias docker_rm_images='docker images -qf dangling=true | xargs docker rmi'
 # 起動していないコンテナを削除する
 alias docker_rm_containers='docker ps -aqf status=exited | xargs docker rm -v' # rm with volumes
 # どのコンテナにも紐付いていないData Volumeを削除する
-# alias docker_rm_volumes='docker volume ls -qf dangling=true | xargs docker volume rm'
+alias docker_rm_volumes='docker volume ls -qf dangling=true | xargs docker volume rm'
 # Docker Composeコンテナを削除する
 alias docker_rm_compose_containers='docker-compose rm -fv'
 
