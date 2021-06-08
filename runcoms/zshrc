@@ -54,6 +54,7 @@ fi
 
 path=(
     $GOPATH/bin(N-/)
+    $(yarn global bin)
     $path
 )
 
