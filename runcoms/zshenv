@@ -15,6 +15,7 @@ export GOENV_DISABLE_GOPATH=1
 export GOPATH="$HOME/go"
 export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+export DENO_INSTALL="$HOME/.deno"
 
 
 # WSL2 で windows バイナリの実行パスを除外する設定だが、
