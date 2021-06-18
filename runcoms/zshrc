@@ -51,10 +51,16 @@ fi
 
 path=(
     $GOPATH/bin(N-/)
-    $(yarn global bin)
     $DENO_INSTALL/bin
     $path
 )
+
+if _has yarn; then
+    path=(
+        $(yarn global bin)
+        $path
+    )
+fi
 
 setopt nonomatch
 
