@@ -78,7 +78,6 @@ if _has nvim; then
 fi
 
 alias vi='vim -u ~/.config/nvim/simple_init.vim'
-alias v=vim
 
 # for git
 alias co='git checkout `git branch | fzf`'
@@ -107,7 +106,8 @@ alias ctags_ruby='ctags --langmap=RUBY:.rb --exclude="*.js" --exclude=".git*" --
 # for Docker
 alias d='docker'
 alias dc='docker-compose'
-alias dce='docker-compose -f docker-compose.yml -f docker-compose.local.yml'
+alias dcu='docker-compose up --scale web=0'
+alias dcd='docker-compose down'
 # 一旦Docker Composeコンテナを削除して掃除してから build & up する
 alias dc_build_up='docker-compose rm -fv && docker-compose build && docker-compose up'
 # 一旦Docker Composeコンテナを削除して掃除してから build する
@@ -122,7 +122,7 @@ alias docker_rm_volumes='docker volume ls -qf dangling=true | xargs docker volum
 alias docker_rm_compose_containers='docker-compose rm -fv'
 
 
-alias ag="ag --color-match '1;31'"
+alias ag="ag --hidden --color-match '1;31'"
 alias updatedb="sudo /usr/libexec/locate.updatedb"
 alias grep='grep --color'
 
@@ -141,6 +141,8 @@ if [ "`alias | grep '^pbcopy'`" ]; then
     unalias pbcopy
     unalias pbpaste
 fi
+
+alias ren='massren'
 
 # }}}
 
