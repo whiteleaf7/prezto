@@ -130,6 +130,10 @@ alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 
 alias delete_unused_branches="git branch --merged|egrep -v '\*|develop|main|master'|xargs git branch -d"
 
+base_branch() {
+    git show-branch | grep '*' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F'[]~^[]' '{print $2}'
+}
+
 if _is_vagrant; then
     # alias pbcopy="lemonade copy"
     # alias pbpaste="lemonade paste"
