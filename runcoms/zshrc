@@ -28,6 +28,7 @@ fi
 
 [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 [ -f /opt/homebrew/bin/brew ] && eval $(/opt/homebrew/bin/brew shellenv)
+[ -f /opt/homebrew/bin/direnv ] && eval "$(direnv hook zsh)"
 
 # 分割した設定ファイルの自動ロード
 ZSHHOME="${HOME}/.config/zsh"

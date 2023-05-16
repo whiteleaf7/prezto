@@ -15,6 +15,7 @@ export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 export DENO_INSTALL="$HOME/.deno"
 
+# export DOCKER_HOST=ssh://limadocker:60006
 
 # WSL2 で windows バイナリの実行パスを除外する設定だが、
 # /etc/wsl.conf に下記を設定すれば自動でやってくれるので必要なくなった
