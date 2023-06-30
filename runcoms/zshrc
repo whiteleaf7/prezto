@@ -48,7 +48,10 @@ fi
 # fpath=(~/.zsh/completion $fpath)
  
 # enhancd
-[ -f ~/github/enhancd/init.sh ] && source ~/github/enhancd/init.sh
+# [ -f ~/github/enhancd/init.sh ] && source ~/github/enhancd/init.sh
+if _has afx; then
+    source <(afx init)
+fi
 
 path=(
     $GOPATH/bin(N-/)
@@ -121,6 +124,9 @@ alias docker_rm_containers='docker ps -aqf status=exited | xargs docker rm -v' #
 alias docker_rm_volumes='docker volume ls -qf dangling=true | xargs docker volume rm'
 # Docker Composeコンテナを削除する
 alias docker_rm_compose_containers='docker-compose rm -fv'
+# カレントディレクトリで実行している docker-compose の app サービスにアタッチ
+# する
+alias docker_attach='docker attach $(docker-compose ps -q app)'
 
 
 alias ag="ag --hidden --color-match '1;31'"
