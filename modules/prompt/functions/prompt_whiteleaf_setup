@@ -78,8 +78,8 @@ function prompt_whiteleaf_setup {
   #   %S - path in the repository
   local branch_format="(${_prompt_whiteleaf_colors[1]}%b%f%u%c)"
   local action_format="(${_prompt_whiteleaf_colors[5]}%a%f)"
-  local unstaged_format="${_prompt_whiteleaf_colors[2]} %f"
-  local staged_format="${_prompt_whiteleaf_colors[5]} %f"
+  local unstaged_format="${_prompt_whiteleaf_colors[2]} %f"
+  local staged_format="${_prompt_whiteleaf_colors[5]} %f"
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:keymap:primary' format '$'
