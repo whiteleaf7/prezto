@@ -109,9 +109,9 @@ alias ctags_ruby='ctags --langmap=RUBY:.rb --exclude="*.js" --exclude=".git*" --
 
 # for Docker
 alias d='docker'
-alias dc='docker-compose'
-alias dcu='docker-compose up --scale web=0'
-alias dcd='docker-compose down'
+alias dc='docker compose'
+alias dcu='docker compose up --scale web=0'
+alias dcd='docker compose down'
 # 一旦Docker Composeコンテナを削除して掃除してから build & up する
 alias dc_build_up='docker-compose rm -fv && docker-compose build && docker-compose up'
 # 一旦Docker Composeコンテナを削除して掃除してから build する
