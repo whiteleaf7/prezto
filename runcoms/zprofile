@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export PAGER='less'
 
 #
@@ -70,3 +70,7 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # MacPorts Installer addition on 2020-12-17_at_16:21:00: adding an appropriate DISPLAY variable for use with MacPorts.
 # export DISPLAY=:0
 # Finished adapting your DISPLAY environment variable for use with MacPorts.
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :

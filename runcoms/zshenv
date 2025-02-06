@@ -15,6 +15,8 @@ export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 export DENO_INSTALL="$HOME/.deno"
 export GOPATH="$HOME/go"
+export NVIM_CLIPBOARD_NO_CUSTOM=1
+export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 # export DOCKER_HOST=ssh://limadocker:60006
 
@@ -39,3 +41,4 @@ fi
 #     export PATH="$PATH:/mnt/c/Windows/System32"
 #     export PATH="$PATH:/mnt/c/Windows/System32/WindowsPowerShell/v1.0"
 # fi
+. "$HOME/.cargo/env"

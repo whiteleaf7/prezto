@@ -48,10 +48,10 @@ fi
 # fpath=(~/.zsh/completion $fpath)
  
 # enhancd
-# [ -f ~/github/enhancd/init.sh ] && source ~/github/enhancd/init.sh
-if _has afx; then
-    source <(afx init)
-fi
+[ -f ~/github/enhancd/init.sh ] && source ~/github/enhancd/init.sh
+# if _has afx; then
+#     source <(afx init)
+# fi
 
 path=(
     $GOPATH/bin(N-/)
@@ -92,10 +92,11 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-# ls を exa に置き換える
-# exa: https://github.com/ogham/exa
-if _has exa; then
-    alias ls='exa --icons'
+# ls を eza に置き換える
+# https://github.com/eza-community/eza
+# install: cargo install eza
+if _has eza; then
+    alias ls='eza --icons'
     alias ll='ls -l'
     alias la='ls -la'
     alias l='ls'
